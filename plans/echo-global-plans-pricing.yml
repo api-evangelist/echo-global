@@ -1,0 +1,40 @@
+name: Echo Global Logistics Plans and Pricing
+description: Echo Global Logistics operates as a technology-enabled freight brokerage. API access via EchoSync is partner-based and requires direct engagement with an Echo sales representative. No self-serve tiered plans are published publicly; pricing is negotiated based on shipment volume, service type, and integration complexity.
+url: https://www.echo.com/technology/integrations/echosync/
+plans:
+  - name: Partner-Connect API (Custom)
+    description: Formerly the Echo REST API. Provides load creation for Truckload, LTL, and Partial shipments, LTL freight rating, real-time tracking, and document retrieval. Access is granted to existing partners.
+    contact: info@echo.com
+    phone: 800-354-7993
+    features:
+      - Load creation (Truckload, LTL, Partial)
+      - LTL freight rating
+      - Real-time shipment tracking
+      - Document retrieval
+    access: Partner-only; contact Echo sales representative or email info@echo.com
+    docs: https://app.swaggerhub.com/apis/echogl/rest-api/
+
+  - name: Customer API (Custom)
+    description: Provides rapid access to competitive truckload quotes and rates 24/7/365. Uses OAuth 2.0 Bearer token authentication.
+    contact: info@echo.com
+    features:
+      - Truckload rate quoting
+      - Competitive rate access
+      - 24/7 availability
+    access: Partner-only; contact Echo sales representative
+    docs: https://app.swaggerhub.com/apis-docs/echogl/Customer_API_OAuth_Public/
+
+  - name: Carrier API (Custom)
+    description: Enables freight carriers to access Echo's Digital Freight Marketplace with real-time load visibility, offer placement, and Book It Now functionality.
+    contact: info@echo.com
+    features:
+      - Real-time load visibility
+      - Offer placement
+      - Book It Now automation
+    access: Carrier partners only; contact Echo sales representative
+    docs: https://app.swaggerhub.com/apis-docs/echogl/Carrier_API_Public/
+
+notes:
+  - Pricing for freight brokerage services is shipment-specific and contract-based
+  - Contract rates typically set annually; short-term 3-6 month structures also available
+  - All API access requires an existing partner relationship with Echo Global Logistics

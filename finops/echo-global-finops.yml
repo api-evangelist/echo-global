@@ -1,0 +1,36 @@
+name: Echo Global Logistics FinOps
+description: Financial operations considerations for organizations integrating with Echo Global Logistics APIs. Echo operates as a freight brokerage; API usage costs are embedded in the freight transaction fees rather than charged as standalone API call fees.
+url: https://www.echo.com/technology/integrations/echosync/
+cost_model:
+  type: Transaction-based / Brokerage margin
+  description: Echo Global Logistics earns revenue through brokerage margin on freight shipments. There is no per-API-call fee structure. Integration costs are the cost of negotiating and maintaining a partner relationship.
+  billing_unit: Per shipment / freight transaction
+  public_pricing: false
+  contact_for_pricing: info@echo.com
+
+cost_drivers:
+  - name: Shipment volume
+    description: Higher shipment volumes may unlock better brokerage rates through contract negotiations
+  - name: Service type
+    description: LTL (Less Than Truckload), FTL (Full Truckload), and Partial load services carry different margin structures
+  - name: Carrier relationships
+    description: Echo leverages 120+ LTL carrier relationships; routing and carrier selection affect per-shipment cost
+  - name: Contract duration
+    description: Annual contracts vs. short-term (3-6 month) agreements affect rate stability and pricing
+
+optimization_tips:
+  - Consolidate shipments to maximize truckload efficiency and reduce per-unit freight costs
+  - Use LTL rating API to compare rates before booking
+  - Leverage contract pricing for predictable, high-volume lanes
+  - Use real-time tracking API to reduce manual check-ins and operational overhead
+  - Automate load creation via Partner-Connect API to reduce manual data entry costs
+
+integration_costs:
+  - Development time to integrate EchoSync API (OAuth 2.0 + REST)
+  - Ongoing maintenance of API integration as Echo updates their platform
+  - EDI setup is an alternative to API integration for legacy TMS/ERP systems
+
+notes:
+  - Echo is a publicly traded company (NASDAQ: ECHO) — financial performance can be tracked via SEC filings
+  - No public SaaS pricing model exists; all financial arrangements are bespoke partner agreements
+  - Echo's technology platform (EchoShip) is available for self-service shipping without direct API integration

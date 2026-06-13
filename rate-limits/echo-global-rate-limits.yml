@@ -1,0 +1,33 @@
+name: Echo Global Logistics API Rate Limits
+description: Echo Global Logistics does not publicly disclose specific rate limit thresholds for their EchoSync API suite. Rate limits are negotiated as part of individual partner agreements. The information below reflects what is publicly known or reasonably inferred from their API documentation.
+url: https://www.echo.com/technology/integrations/echosync/documentation/
+limits:
+  - api: Authorizer API
+    description: OAuth 2.0 Bearer token issuance endpoint
+    docs: https://app.swaggerhub.com/apis-docs/echogl/Echo_Authorizer_Public/
+    rate_limit: Not publicly disclosed
+    notes: Token-based authentication; tokens should be cached and reused rather than requested per call
+
+  - api: Partner-Connect API (REST API)
+    description: Load creation, LTL rating, tracking, and document retrieval
+    docs: https://app.swaggerhub.com/apis/echogl/rest-api/
+    rate_limit: Not publicly disclosed
+    notes: Contact Echo partner team for rate limit details; abuse of the API may result in suspension of access
+
+  - api: Customer API
+    description: Truckload rate quoting
+    docs: https://app.swaggerhub.com/apis-docs/echogl/Customer_API_OAuth_Public/
+    rate_limit: Not publicly disclosed
+    notes: OAuth 2.0 authentication required
+
+  - api: Carrier API
+    description: Digital Freight Marketplace access for carriers
+    docs: https://app.swaggerhub.com/apis-docs/echogl/Carrier_API_Public/
+    rate_limit: Not publicly disclosed
+    notes: Intended for carrier automation of load booking; rate limits negotiated per partner agreement
+
+general_notes:
+  - Echo Global Logistics does not publish public rate limit documentation
+  - Rate limits are part of individual partner and integration agreements
+  - For specific rate limit details contact: info@echo.com or call 800-354-7993
+  - Developers are advised to implement exponential back-off and token caching as best practices
