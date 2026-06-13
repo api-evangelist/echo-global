@@ -1,0 +1,106 @@
+{
+  "example": "Search Available Loads",
+  "description": "Example request for searching available loads via the EchoSync Carrier API",
+  "request": {
+    "method": "POST",
+    "url": "https://carrierapi.echo.com/v1/availableloads?offset=0&limit=20",
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "origin": {
+        "stateOrProvince": "IL",
+        "deadHead": {
+          "value": 100,
+          "units": "mi"
+        }
+      },
+      "destination": {
+        "zone": "z9"
+      },
+      "pickupDate": ["2026-06-20", "2026-06-21"],
+      "equipment": "van_dry_53",
+      "mode": "tl",
+      "distance": {
+        "min": 500,
+        "max": 2500,
+        "units": "mi"
+      },
+      "weight": {
+        "max": 44000,
+        "units": "lb"
+      },
+      "specialServices": {
+        "hazmat": false,
+        "temp": true,
+        "team": false
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "resultSet": {
+        "count": 2,
+        "offset": 0,
+        "limit": 20,
+        "total": 2
+      },
+      "loads": [
+        {
+          "loadId": "6239230",
+          "equipment": ["van_dry_53"],
+          "mode": "tl",
+          "stops": [
+            {
+              "stopNumber": 1,
+              "stopType": "pick",
+              "location": {
+                "city": "Chicago",
+                "stateOrProvince": "IL",
+                "postalCode": "60601",
+                "country": "USA",
+                "zone": "z6",
+                "coordinate": {"lat": 41.8827, "lon": -87.6233}
+              },
+              "serviceWindow": {
+                "start": "2026-06-20T08:00:00",
+                "end": "2026-06-20T17:00:00",
+                "timezone": "CT"
+              }
+            },
+            {
+              "stopNumber": 2,
+              "stopType": "drop",
+              "location": {
+                "city": "Los Angeles",
+                "stateOrProvince": "CA",
+                "postalCode": "90001",
+                "country": "USA",
+                "zone": "z9",
+                "coordinate": {"lat": 34.0522, "lon": -118.2437}
+              },
+              "serviceWindow": {
+                "start": "2026-06-23T08:00:00",
+                "end": "2026-06-23T17:00:00",
+                "timezone": "PT"
+              }
+            }
+          ],
+          "distance": {"value": 2015, "units": "mi"},
+          "weight": {"value": 38000, "units": "lb"},
+          "specialServices": {
+            "hazmat": false,
+            "dropReceiver": false,
+            "dropShipper": false,
+            "temp": false,
+            "team": false
+          },
+          "rate": {"value": 2200, "currency": "USD"},
+          "commodity": ["electronics"]
+        }
+      ]
+    }
+  }
+}

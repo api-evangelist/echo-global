@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/echo-global/main/json-schema/load.json",
+  "title": "Load",
+  "description": "Schema for an Echo Global Logistics available load (used in Carrier API)",
+  "type": "object",
+  "required": ["loadId", "equipment", "mode", "stops", "distance", "weight", "specialServices", "rate", "commodity"],
+  "properties": {
+    "loadId": {
+      "type": "string",
+      "description": "Echo load identifier",
+      "example": "6239230"
+    },
+    "equipment": {
+      "type": "array",
+      "description": "Expected equipment types",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["tl"],
+      "description": "Shipment mode (currently truckload only)"
+    },
+    "stops": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/definitions/Stop"
+      }
+    },
+    "distance": {
+      "type": "object",
+      "required": ["value", "units"],
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32",
+          "example": 400
+        },
+        "units": {
+          "type": "string",
+          "enum": ["mi", "km"],
+          "default": "mi"
+        }
+      }
+    },
+    "weight": {
+      "type": "object",
+      "required": ["value", "units"],
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32",
+          "example": 4000
+        },
+        "units": {
+          "type": "string",
+          "enum": ["lb", "kg"],
+          "default": "lb"
+        }
+      }
+    },
+    "specialServices": {
+      "type": "object",
+      "properties": {
+        "hazmat": {"type": "boolean", "default": false},
+        "dropReceiver": {"type": "boolean", "default": false},
+        "dropShipper": {"type": "boolean", "default": false},
+        "temp": {"type": "boolean", "default": false},
+        "straps": {"type": "boolean", "default": false},
+        "loadBar": {"type": "boolean", "default": false},
+        "freeze": {"type": "boolean", "default": false},
+        "tanker": {"type": "boolean", "default": false},
+        "tarps": {"type": "boolean", "default": false},
+        "od": {"type": "boolean", "default": false},
+        "assist": {"type": "boolean", "default": false},
+        "twic": {"type": "boolean", "default": false},
+        "team": {"type": "boolean", "default": false}
+      }
+    },
+    "rate": {
+      "type": "object",
+      "nullable": true,
+      "required": ["value", "currency"],
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "example": 1000
+        },
+        "currency": {
+          "type": "string",
+          "enum": ["USD"],
+          "default": "USD"
+        }
+      }
+    },
+    "commodity": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": ["boxes"]
+    }
+  },
+  "definitions": {
+    "Stop": {
+      "type": "object",
+      "required": ["stopNumber", "stopType", "location", "serviceWindow"],
+      "properties": {
+        "stopNumber": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1
+        },
+        "stopType": {
+          "type": "string",
+          "enum": ["pick", "drop"]
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "city": {"type": "string", "minLength": 2, "example": "Chicago"},
+            "stateOrProvince": {"type": "string", "minLength": 2, "example": "IL"},
+            "postalCode": {"type": "string", "minLength": 5},
+            "country": {"type": "string", "enum": ["USA", "CAN", "MEX"]},
+            "zone": {"type": "string", "enum": ["z0","z1","z2","z3","z4","z5","z6","z7","z8","z9","ze","zc","zw","zm"]},
+            "coordinate": {
+              "type": "object",
+              "properties": {
+                "lat": {"type": "number", "format": "float"},
+                "lon": {"type": "number", "format": "float"}
+              }
+            }
+          }
+        },
+        "serviceWindow": {
+          "type": "object",
+          "required": ["start", "end", "timezone"],
+          "properties": {
+            "start": {"type": "string", "format": "date-time"},
+            "end": {"type": "string", "format": "date-time"},
+            "timezone": {"type": "string", "nullable": true, "example": "CT"}
+          }
+        }
+      }
+    }
+  }
+}

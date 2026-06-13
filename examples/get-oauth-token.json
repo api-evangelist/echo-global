@@ -1,0 +1,28 @@
+{
+  "example": "Get OAuth 2.0 Bearer Token",
+  "description": "Example request for obtaining an OAuth 2.0 access token via the EchoSync Authorizer API",
+  "request": {
+    "method": "POST",
+    "url": "https://auth.echo.com/token",
+    "headers": {
+      "x-api-key": "{your_api_key}",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "client_id={your_client_id}&client_secret={your_client_secret}&grant_type=client_credentials&scope=loads:read"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "access_token": "NWE4Nzg2ZDEtNzQyMS00ZDViLThjMjctMGQwNjlmZjU5MWNkBGjFElT7CWzl0d....",
+      "expires_in": 3600,
+      "token_type": "Bearer",
+      "scope": "loads:read"
+    }
+  },
+  "notes": [
+    "Token is valid for expires_in seconds (typically 3600 = 1 hour).",
+    "Do not request a new token until the current one expires.",
+    "Rate limit: do not exceed 3 requests per second.",
+    "Available scopes: quotes:create, tender:action, load_status:read, invoice:read, connect_api:action, loads:read, loads:action"
+  ]
+}

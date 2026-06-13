@@ -1,0 +1,104 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "echo": "https://www.echo.com/ns/",
+    "freight": "https://schema.org/ParcelDelivery",
+    "Organization": "https://schema.org/Organization",
+    "Service": "https://schema.org/Service",
+    "Place": "https://schema.org/Place",
+    "PostalAddress": "https://schema.org/PostalAddress",
+    "ContactPoint": "https://schema.org/ContactPoint",
+    "WebAPI": "https://schema.org/WebAPI",
+    "shipmentId": "echo:shipmentId",
+    "proNumber": "echo:proNumber",
+    "mode": "echo:mode",
+    "locationType": "echo:locationType",
+    "freightClass": "echo:freightClass",
+    "nmfcNumber": "echo:nmfcNumber",
+    "loadId": "echo:loadId",
+    "quoteId": "echo:quoteId",
+    "quoteKey": "echo:quoteKey",
+    "serviceOptionId": "echo:serviceOptionId",
+    "totalCost": "https://schema.org/price",
+    "currency": "https://schema.org/currency",
+    "pickupDate": "https://schema.org/availabilityStarts",
+    "deliveryDate": "https://schema.org/availabilityEnds",
+    "origin": "https://schema.org/departureLocation",
+    "destination": "https://schema.org/arrivalLocation",
+    "commodities": "echo:commodities",
+    "weight": "https://schema.org/weight",
+    "distance": "https://schema.org/distance",
+    "equipment": "echo:equipment",
+    "isHazmat": "echo:isHazmat",
+    "accessToken": "echo:accessToken",
+    "scope": "echo:scope",
+    "grantType": "echo:grantType"
+  },
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.echo.com",
+      "name": "Echo Global Logistics",
+      "url": "https://www.echo.com",
+      "description": "Tech-enabled freight brokerage with REST APIs for shipping quotes, booking LTL and FTL shipments, tracking deliveries, and managing carrier relationships.",
+      "sameAs": [
+        "https://www.linkedin.com/company/echo-global-logistics",
+        "https://x.com/echologistics"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@echo.com",
+        "url": "https://www.echo.com/technology/integrations/echosync/documentation/"
+      }
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://www.echo.com/api/partner-connect",
+      "name": "EchoSync Partner-Connect API",
+      "description": "REST API for load creation (LTL, TL, PL), LTL freight rating, real-time shipment tracking, and document retrieval.",
+      "provider": {
+        "@id": "https://www.echo.com"
+      },
+      "documentation": "https://www.echo.com/technology/integrations/echosync/documentation/",
+      "termsOfService": "https://www.echo.com",
+      "version": "2.7.7-main",
+      "url": "https://restapi.echo.com/v2"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://www.echo.com/api/customer",
+      "name": "EchoSync Customer API",
+      "description": "API for Echo customers to request truckload quotes 24/7 using OAuth 2.0 or Basic Auth.",
+      "provider": {
+        "@id": "https://www.echo.com"
+      },
+      "documentation": "https://www.echo.com/technology/integrations/echosync/documentation/",
+      "version": "v2.1.3-main",
+      "url": "https://customerapi.echo.com"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://www.echo.com/api/carrier",
+      "name": "EchoSync Carrier API",
+      "description": "API enabling freight carriers to access Echo's Digital Freight Marketplace with real-time load visibility, bidding, and Book It Now functionality.",
+      "provider": {
+        "@id": "https://www.echo.com"
+      },
+      "documentation": "https://www.echo.com/technology/integrations/echosync/documentation/",
+      "version": "2.24.0222",
+      "url": "https://carrierapi.echo.com"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://www.echo.com/api/authorizer",
+      "name": "EchoSync Authorizer API",
+      "description": "OAuth 2.0 token management for the Carrier and Customer APIs. Issues Bearer tokens using client credentials flow.",
+      "provider": {
+        "@id": "https://www.echo.com"
+      },
+      "documentation": "https://www.echo.com/technology/integrations/echosync/documentation/",
+      "version": "1.0.0",
+      "url": "https://auth.echo.com"
+    }
+  ]
+}

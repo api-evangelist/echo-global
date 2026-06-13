@@ -1,0 +1,109 @@
+{
+  "example": "Create Truckload Quote",
+  "description": "Example request for creating a truckload quote via the EchoSync Customer API",
+  "request": {
+    "method": "POST",
+    "url": "https://customerapi.echo.com/v2/quotes",
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "modes": ["tl"],
+      "stops": [
+        {
+          "stopNumber": 1,
+          "stopType": "pick",
+          "city": "Chicago",
+          "stateOrProvince": "IL",
+          "postalCode": "60601",
+          "country": "us",
+          "serviceWindow": {
+            "startDate": "2026-06-20"
+          }
+        },
+        {
+          "stopNumber": 2,
+          "stopType": "drop",
+          "city": "Los Angeles",
+          "stateOrProvince": "CA",
+          "postalCode": "90001",
+          "country": "us",
+          "serviceWindow": {
+            "startDate": "2026-06-23"
+          }
+        }
+      ],
+      "equipment": "van_dry_53",
+      "isHazmat": false,
+      "referenceNumbers": [
+        {
+          "referencenumbertype": "purchase_order",
+          "value": "PO-2026-00456"
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "quote": {
+        "status": "open",
+        "quoteId": "AB35C7CX98",
+        "quoteKey": "42a815ef1b444504b422b0dc24e44f8a",
+        "quoteNumber": "AB35C7CX98",
+        "createdDate": "2026-06-13T10:00:00.000-05:00",
+        "expirationDate": "2026-06-14T10:00:00.000-05:00",
+        "stops": [
+          {
+            "stopNumber": 1,
+            "stopType": "pick",
+            "city": "Chicago",
+            "stateOrProvince": "IL",
+            "postalCode": "60601",
+            "country": "us",
+            "serviceWindow": {"startDate": "2026-06-20"}
+          },
+          {
+            "stopNumber": 2,
+            "stopType": "drop",
+            "city": "Los Angeles",
+            "stateOrProvince": "CA",
+            "postalCode": "90001",
+            "country": "us",
+            "serviceWindow": {"startDate": "2026-06-23"}
+          }
+        ],
+        "serviceOptions": [
+          {
+            "serviceOptionId": 1,
+            "currencyType": "usd",
+            "transitTimeInDays": 3,
+            "totalMileage": 2015,
+            "pickupDate": "2026-06-20",
+            "mode": "tl",
+            "totalCost": 2450.00,
+            "equipment": "van_dry_53",
+            "isHazmat": false,
+            "charges": [
+              {
+                "rateCode": "line_haul",
+                "rate": 2100.00,
+                "multiplier": 1,
+                "multiplierType": "flat",
+                "amount": 2100.00
+              },
+              {
+                "rateCode": "fuel",
+                "rate": 350.00,
+                "multiplier": 1,
+                "multiplierType": "flat",
+                "amount": 350.00
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

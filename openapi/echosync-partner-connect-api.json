@@ -1,0 +1,495 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "EchoSync Partner-Connect API (REST API V2)",
+    "description": "Formerly the Echo REST API. Provides load creation for Truckload, LTL, and Partial shipments, LTL freight rating, real-time shipment tracking, and document retrieval for existing Echo partners. All API access is over HTTPS. All data is sent and received as JSON. Authentication requires UserName and APIKey sent as request headers.",
+    "version": "2.7.7-main",
+    "contact": {
+      "name": "Echo Global Logistics",
+      "url": "https://www.echo.com",
+      "email": "info@echo.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://restapi.echo.com",
+      "description": "Production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "shipments",
+      "description": "GET and POST to shipment endpoints."
+    },
+    {
+      "name": "ping",
+      "description": "GET to ping endpoints."
+    },
+    {
+      "name": "documents",
+      "description": "GET and POST to shipment documents endpoints."
+    },
+    {
+      "name": "rates",
+      "description": "GET and POST to shipment rates endpoints."
+    },
+    {
+      "name": "query",
+      "description": "GET and POST to query shipment details endpoints."
+    }
+  ],
+  "paths": {
+    "/v2/ping": {
+      "get": {
+        "operationId": "GetPingResponse",
+        "summary": "Provides confirmation of service availability and authentication",
+        "description": "Retrieve a ping to confirm service availability.",
+        "tags": ["ping"],
+        "security": [{"basicAuth": []}],
+        "responses": {
+          "200": {
+            "description": "Service is available and authentication is valid"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/v2/shipments/LTL": {
+      "post": {
+        "operationId": "CreateShipmentLTL",
+        "summary": "Accepts an LTL shipment for creation",
+        "description": "Create a Less Than Truckload (LTL) shipment.",
+        "tags": ["shipments"],
+        "security": [{"basicAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Shipment created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/v2/shipments/TL": {
+      "post": {
+        "operationId": "CreateShipmentTL",
+        "summary": "Accepts a TL shipment for creation",
+        "description": "Create a Truckload (TL) shipment.",
+        "tags": ["shipments"],
+        "security": [{"basicAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Shipment created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/v2/shipments/PL": {
+      "post": {
+        "operationId": "CreateShipmentPL",
+        "summary": "Accepts a PL shipment for creation",
+        "description": "Create a Partial Load (PL) shipment.",
+        "tags": ["shipments"],
+        "security": [{"basicAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Shipment created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/v2/shipments/{Id}": {
+      "get": {
+        "operationId": "GetShipment",
+        "summary": "Returns a shipment",
+        "description": "Retrieve shipment details by shipment ID.",
+        "tags": ["shipments"],
+        "security": [{"basicAuth": []}],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The Echo shipment ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Shipment details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Shipment not found"
+          }
+        }
+      }
+    },
+    "/v2/shipments/{Id}/status": {
+      "get": {
+        "operationId": "GetShipmentStatus",
+        "summary": "Returns shipment status",
+        "description": "Retrieve the current status of a shipment.",
+        "tags": ["shipments"],
+        "security": [{"basicAuth": []}],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Shipment status"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/v2/shipments/{Id}/tracking": {
+      "get": {
+        "operationId": "GetShipmentTracking",
+        "summary": "Returns tracking information for a shipment",
+        "description": "Retrieve real-time tracking information for a shipment.",
+        "tags": ["shipments"],
+        "security": [{"basicAuth": []}],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tracking information"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/v2/shipments/{Id}/documents": {
+      "get": {
+        "operationId": "GetShipmentDocuments",
+        "summary": "Returns documents for a shipment",
+        "description": "Retrieve documents associated with a shipment.",
+        "tags": ["documents"],
+        "security": [{"basicAuth": []}],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Shipment documents"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/v2/rates/LTL": {
+      "post": {
+        "operationId": "GetShipmentRatesLTL",
+        "summary": "Returns LTL freight rates",
+        "description": "Request LTL freight rates for a shipment.",
+        "tags": ["rates"],
+        "security": [{"basicAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "LTL rates"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/v2/query/shipments": {
+      "post": {
+        "operationId": "QueryShipments",
+        "summary": "Query shipment details",
+        "description": "Query shipments based on filter criteria.",
+        "tags": ["query"],
+        "security": [{"basicAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dateFrom": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "dateTo": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Query results"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ShipmentRequest": {
+        "type": "object",
+        "description": "Request body for creating a shipment",
+        "properties": {
+          "origin": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "destination": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "pickupDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Requested pickup date (YYYY-MM-DD)"
+          },
+          "commodities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Commodity"
+            }
+          }
+        },
+        "required": ["origin", "destination", "pickupDate"]
+      },
+      "ShipmentResponse": {
+        "type": "object",
+        "description": "Shipment response object",
+        "properties": {
+          "shipmentId": {
+            "type": "string",
+            "description": "Echo shipment ID"
+          },
+          "status": {
+            "type": "string",
+            "description": "Current shipment status"
+          },
+          "proNumber": {
+            "type": "string",
+            "description": "PRO number assigned to the shipment"
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "description": "Shipment location",
+        "required": ["companyName", "address1", "city", "stateOrProvince", "postalCode", "country", "locationType"],
+        "properties": {
+          "companyName": {
+            "type": "string"
+          },
+          "address1": {
+            "type": "string"
+          },
+          "address2": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "stateOrProvince": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2
+          },
+          "postalCode": {
+            "type": "string",
+            "minLength": 5
+          },
+          "country": {
+            "type": "string",
+            "enum": ["US", "CA", "MX"]
+          },
+          "locationType": {
+            "type": "string",
+            "enum": ["BUSINESS", "CONSTRUCTIONSITE", "RESIDENTIAL", "TRADESHOW"]
+          }
+        }
+      },
+      "Commodity": {
+        "type": "object",
+        "description": "Freight commodity details",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "pieces": {
+            "type": "integer"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "weightUnit": {
+            "type": "string",
+            "enum": ["LB", "KG"]
+          },
+          "freightClass": {
+            "type": "string"
+          }
+        }
+      },
+      "RateRequest": {
+        "type": "object",
+        "description": "LTL rate request",
+        "properties": {
+          "origin": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "destination": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "commodities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Commodity"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "UserName and APIKey encoded as Base64"
+      }
+    }
+  }
+}

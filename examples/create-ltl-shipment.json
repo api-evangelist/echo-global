@@ -1,0 +1,74 @@
+{
+  "example": "Create LTL Shipment",
+  "description": "Example request for creating a Less Than Truckload (LTL) shipment via the EchoSync Partner-Connect API",
+  "request": {
+    "method": "POST",
+    "url": "https://restapi.echo.com/v2/shipments/LTL",
+    "headers": {
+      "Authorization": "Basic {base64(username:apikey)}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "origin": {
+        "companyName": "ABC Manufacturing",
+        "address1": "123 Industrial Blvd",
+        "city": "Chicago",
+        "stateOrProvince": "IL",
+        "postalCode": "60601",
+        "country": "US",
+        "locationType": "BUSINESS",
+        "contact": {
+          "name": "John Smith",
+          "phone": "312-555-0100",
+          "email": "jsmith@abcmfg.com"
+        }
+      },
+      "destination": {
+        "companyName": "XYZ Distribution",
+        "address1": "456 Commerce Way",
+        "city": "Dallas",
+        "stateOrProvince": "TX",
+        "postalCode": "75201",
+        "country": "US",
+        "locationType": "BUSINESS",
+        "contact": {
+          "name": "Jane Doe",
+          "phone": "214-555-0200",
+          "email": "jdoe@xyzdist.com"
+        }
+      },
+      "pickupDate": "2026-06-20",
+      "mode": "LTL",
+      "commodities": [
+        {
+          "description": "Auto Parts",
+          "pieces": 4,
+          "packageType": "PLT",
+          "weight": 1200,
+          "weightUnit": "LB",
+          "length": 48,
+          "width": 40,
+          "height": 48,
+          "freightClass": "70",
+          "isHazmat": false
+        }
+      ],
+      "referenceNumbers": [
+        {
+          "type": "purchase_order",
+          "value": "PO-2026-00123"
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "shipmentId": "ECHO-7891234",
+      "proNumber": "PRO-56789",
+      "status": "BOOKED",
+      "pickupDate": "2026-06-20",
+      "estimatedDeliveryDate": "2026-06-23"
+    }
+  }
+}

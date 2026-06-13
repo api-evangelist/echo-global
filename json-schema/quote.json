@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/echo-global/main/json-schema/quote.json",
+  "title": "Quote",
+  "description": "Schema for an Echo Global Logistics truckload quote",
+  "type": "object",
+  "required": ["modes", "stops"],
+  "properties": {
+    "quoteId": {
+      "type": "string",
+      "description": "Human-readable quote number",
+      "example": "AB35C7CX98"
+    },
+    "quoteKey": {
+      "type": "string",
+      "description": "Unique key of the quote",
+      "example": "42a815ef1b444504b422b0dc24e44f8a"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "open"],
+      "description": "Quote status: pending (internal only) or open (available to customer)"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Quote creation date-time (RFC 3339)"
+    },
+    "expirationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Quote expiration date-time (RFC 3339)"
+    },
+    "modes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["tl"]
+      },
+      "description": "Requested service modes"
+    },
+    "stops": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/definitions/Stop"
+      }
+    },
+    "equipment": {
+      "type": "string",
+      "enum": ["van_dry_53", "reefer_53", "flatbed_48"],
+      "description": "Required equipment type"
+    },
+    "isHazmat": {
+      "type": "boolean",
+      "default": false
+    },
+    "referenceNumbers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "value"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["purchase_order", "bill_of_lading", "order"]
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "serviceOptions": {
+      "type": "array",
+      "description": "Available pricing options returned on the quote",
+      "items": {
+        "$ref": "#/definitions/ServiceOption"
+      }
+    }
+  },
+  "definitions": {
+    "Stop": {
+      "type": "object",
+      "required": ["stopNumber", "stopType", "postalCode", "country", "serviceWindow"],
+      "properties": {
+        "stopNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Sequential stop number starting at 1"
+        },
+        "stopType": {
+          "type": "string",
+          "enum": ["pick", "drop"]
+        },
+        "addressLines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "city": {
+          "type": "string",
+          "minLength": 2
+        },
+        "stateOrProvince": {
+          "type": "string",
+          "minLength": 2
+        },
+        "postalCode": {
+          "type": "string",
+          "minLength": 5
+        },
+        "country": {
+          "type": "string",
+          "enum": ["us"]
+        },
+        "serviceWindow": {
+          "type": "object",
+          "required": ["startDate"],
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "format": "date",
+              "description": "Service window start date (yyyy-MM-dd)"
+            }
+          }
+        }
+      }
+    },
+    "ServiceOption": {
+      "type": "object",
+      "required": ["serviceOptionId", "currencyType", "pickupDate", "mode", "totalCost", "charges"],
+      "properties": {
+        "serviceOptionId": {
+          "type": "integer",
+          "example": 1
+        },
+        "currencyType": {
+          "type": "string",
+          "enum": ["usd"]
+        },
+        "transitTimeInDays": {
+          "type": "integer",
+          "example": 3
+        },
+        "totalMileage": {
+          "type": "number",
+          "example": 2075
+        },
+        "pickupDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["tl"]
+        },
+        "totalCost": {
+          "type": "number"
+        },
+        "equipment": {
+          "type": "string",
+          "enum": ["van_dry_53", "reefer_53", "flatbed_48"]
+        },
+        "isHazmat": {
+          "type": "boolean",
+          "default": false
+        },
+        "charges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["rateCode", "rate", "multiplier", "multiplierType", "amount"],
+            "properties": {
+              "rateCode": {
+                "type": "string",
+                "enum": ["line_haul", "fuel", "unsupported_value"]
+              },
+              "rate": {
+                "type": "number",
+                "example": 1500
+              },
+              "multiplier": {
+                "type": "number"
+              },
+              "multiplierType": {
+                "type": "string",
+                "enum": ["flat"]
+              },
+              "amount": {
+                "type": "number",
+                "example": 1500
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
