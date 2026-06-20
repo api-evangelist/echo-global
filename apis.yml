@@ -1,7 +1,7 @@
 aid: echo-global
 name: Echo Global Logistics
 description: Tech-enabled freight brokerage with REST APIs for shipping quotes, booking LTL and FTL shipments, tracking deliveries, and managing carrier relationships. The EchoSync API suite includes the Partner-Connect API for load creation and LTL rating, the Customer API for truckload quoting, the Carrier API for digital freight marketplace access, and an Authorizer API for OAuth 2.0 token management.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/echo-global/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -19,7 +19,7 @@ apis:
   - aid: echo-global:echosync-partner-connect-api
     name: EchoSync Partner-Connect API
     description: Formerly the Echo REST API. Provides load creation for Truckload, LTL, and Partial shipments, LTL freight rating, real-time shipment tracking, and document retrieval for existing Echo partners.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
     baseURL: https://api.echo.com
     tags:
@@ -37,7 +37,7 @@ apis:
   - aid: echo-global:echosync-customer-api
     name: EchoSync Customer API
     description: Provides rapid access to competitive truckload quotes and rates 24/7/365 using OAuth 2.0 Bearer token authentication.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
     baseURL: https://api.echo.com
     tags:
@@ -53,7 +53,7 @@ apis:
   - aid: echo-global:echosync-carrier-api
     name: EchoSync Carrier API
     description: Enables freight carriers to access Echo's Digital Freight Marketplace with real-time load visibility, offer placement, and Book It Now functionality to eliminate manual load booking.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
     baseURL: https://api.echo.com
     tags:
@@ -70,7 +70,7 @@ apis:
   - aid: echo-global:echosync-authorizer-api
     name: EchoSync Authorizer API
     description: Manages OAuth 2.0 Bearer token authentication for both the Carrier and Customer APIs.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
     baseURL: https://api.echo.com
     tags:
