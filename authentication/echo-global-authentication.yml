@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/echosync-authorizer-api.json, openapi/echosync-customer-api.json, openapi/echosync-partner-connect-api.json
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/echosync-authorizer-api.json
+  - openapi/echosync-partner-connect-api.json
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  sources:
+  - openapi/echosync-authorizer-api.json
+- name: customer_api_authorizer_post
+  type: apiKey
+  in: header
+  parameter: Authorization
+  sources:
+  - openapi/echosync-customer-api.json

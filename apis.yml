@@ -84,6 +84,12 @@ apis:
         url: https://app.swaggerhub.com/apis-docs/echogl/Echo_Authorizer_Public/
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/echo-global-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/echo-global-domain-security.yml
+  - type: Authentication
+    url: authentication/echo-global-authentication.yml
   - type: Website
     url: https://www.echo.com/
   - type: Documentation
