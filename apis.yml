@@ -84,6 +84,8 @@ apis:
         url: https://app.swaggerhub.com/apis-docs/echogl/Echo_Authorizer_Public/
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/echo-global-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/echo-global-vulnerability-disclosure.yml
   - type: DomainSecurity
