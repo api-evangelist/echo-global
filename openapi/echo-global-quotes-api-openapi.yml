@@ -1,0 +1,271 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Echo Global Logistics
+    url: https://www.echo.com
+    email: info@echo.com
+  version: 1.0.0
+  title: Echo Authorizer documents quotes API
+  description: 'All API operations require an access token to be passed in the Authorization Header for each request. The token type is an OAuth 2.0 Bearer token. To get the token you have to call the /token operation of this API and provide **client_id** and **client_secret**.
+
+
+    **`Access Token Lifecycle:`** When you recieve an Access Token, it is valid for defined amount of time. The expiration time for the token is returned in the response along with the bearer token.  Developers should implement the client application in a way that  token will be requested again only after it expires. During this time you don''t have to request new token per each request, but you can simply reuse the same token to access API resources, until the token expires. The invalid token or token expiration will be indicated by HTTP Status Code 401 Unauthorized, then your application has to request new Access token.
+
+
+    **`Access Token Request Rate Limiting:`** The Access Token should be used for the lifetime of the token until it has expired. Partners requesting new tokens multiple times in an hour may be subject to rate limiting.
+
+
+    **`API Request Rate Limiting:`** Please do not exceed more than 3 requests per second. Partners who exceed this limit may be subject to rate limiting.'
+servers:
+- description: SwaggerHub API Auto Mocking
+  url: https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0
+- description: Production environment.
+  url: https://auth.echo.com
+tags:
+- name: quotes
+  description: Used for creating and retrieving quotes.
+paths:
+  /v2/quotes/{id}:
+    get:
+      operationId: Quote_v2.show
+      description: Used for retrieving quotes.
+      summary: Used for retrieving quotes.
+      tags:
+      - quotes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: A quote response
+                type: object
+                required:
+                - quote
+                properties:
+                  quote:
+                    type: object
+                    allOf:
+                    - required:
+                      - status
+                      - quoteNumber
+                      - quoteKey
+                      - quoteId
+                      - createdDate
+                      - expirationDate
+                      - stops
+                      - serviceOptions
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                          description: The status of the quote.
+                          enum:
+                          - pending
+                          - open
+                        quoteId:
+                          type: string
+                          description: Human-readable quote number.
+                          example: AB35C7CX98
+                        quoteKey:
+                          type: string
+                          description: The unique key of the quote
+                          example: 42a815ef1b444504b422b0dc24e44f8a
+                        quoteNumber:
+                          type: string
+                          description: Human-readable quote number.
+                          example: AB35C7CX98
+                        createdDate:
+                          type: string
+                          format: date-time
+                          description: The creation date of the quote. (RFC 3339)
+                        expirationDate:
+                          type: string
+                          description: The expiration date of the quote. (RFC 3339)
+                          format: date-time
+                          example: '2019-05-09T18:43:21.226-06:00'
+                        stops:
+                          type: array
+                          minItems: 2
+                          items:
+                            type: object
+                            properties:
+                              stopNumber:
+                                type: integer
+                                minimum: 1
+                                example: 1
+                              stopType:
+                                type: string
+                                enum:
+                                - pick
+                                - drop
+                              postalCode:
+                                type: string
+                                minLength: 5
+                              country:
+                                type: string
+                                enum:
+                                - us
+                              serviceWindow:
+                                type: object
+                                properties:
+                                  startDate:
+                                    type: string
+                                    format: date
+                        serviceOptions:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              serviceOptionId:
+                                type: integer
+                                example: 1
+                              currencyType:
+                                type: string
+                                enum:
+                                - usd
+                              transitTimeInDays:
+                                type: integer
+                                example: 3
+                              totalMileage:
+                                type: number
+                                example: 2075
+                              pickupDate:
+                                type: string
+                                format: date
+                              mode:
+                                type: string
+                                enum:
+                                - tl
+                              totalCost:
+                                type: number
+                              equipment:
+                                type: string
+                                enum:
+                                - van_dry_53
+                                - reefer_53
+                                - flatbed_48
+                              isHazmat:
+                                type: boolean
+                                default: false
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden Invalid Token or API Key
+        '404':
+          description: Not found
+        '500':
+          description: Server not found
+        '503':
+          description: Service unavailable
+      security:
+      - customer_api_authorizer_get: []
+  /v2/quotes:
+    post:
+      operationId: Quote_v2.create
+      description: Used for creating quotes.
+      summary: Used for creating quotes.
+      tags:
+      - quotes
+      parameters:
+      - in: header
+        name: X-Echo-Channel-Id
+        schema:
+          type: string
+        required: false
+      - in: header
+        name: X-Echo-System-Id
+        schema:
+          type: string
+        required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: A quote request
+              type: object
+              required:
+              - modes
+              - stops
+              properties:
+                modes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - tl
+                stops:
+                  type: array
+                  minItems: 2
+                  items:
+                    type: object
+                    properties:
+                      stopNumber:
+                        type: integer
+                        minimum: 1
+                      stopType:
+                        type: string
+                        enum:
+                        - pick
+                        - drop
+                      postalCode:
+                        type: string
+                        minLength: 5
+                      country:
+                        type: string
+                        enum:
+                        - us
+                      serviceWindow:
+                        type: object
+                        properties:
+                          startDate:
+                            type: string
+                            format: date
+                equipment:
+                  type: string
+                  enum:
+                  - van_dry_53
+                  - reefer_53
+                  - flatbed_48
+                isHazmat:
+                  type: boolean
+                  default: false
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Invalid token or API key
+        '404':
+          description: Not found
+        '422':
+          description: Service options not found
+        '500':
+          description: Server not found
+        '502':
+          description: Bad gateway
+        '503':
+          description: Service unavailable
+      security:
+      - customer_api_authorizer_post: []
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header

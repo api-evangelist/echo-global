@@ -1,0 +1,128 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Echo Global Logistics
+    url: https://www.echo.com
+    email: info@echo.com
+  version: 1.0.0
+  title: Echo Authorizer documents rates API
+  description: 'All API operations require an access token to be passed in the Authorization Header for each request. The token type is an OAuth 2.0 Bearer token. To get the token you have to call the /token operation of this API and provide **client_id** and **client_secret**.
+
+
+    **`Access Token Lifecycle:`** When you recieve an Access Token, it is valid for defined amount of time. The expiration time for the token is returned in the response along with the bearer token.  Developers should implement the client application in a way that  token will be requested again only after it expires. During this time you don''t have to request new token per each request, but you can simply reuse the same token to access API resources, until the token expires. The invalid token or token expiration will be indicated by HTTP Status Code 401 Unauthorized, then your application has to request new Access token.
+
+
+    **`Access Token Request Rate Limiting:`** The Access Token should be used for the lifetime of the token until it has expired. Partners requesting new tokens multiple times in an hour may be subject to rate limiting.
+
+
+    **`API Request Rate Limiting:`** Please do not exceed more than 3 requests per second. Partners who exceed this limit may be subject to rate limiting.'
+servers:
+- description: SwaggerHub API Auto Mocking
+  url: https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0
+- description: Production environment.
+  url: https://auth.echo.com
+tags:
+- name: rates
+  description: GET and POST to shipment rates endpoints.
+paths:
+  /v2/rates/LTL:
+    post:
+      operationId: GetShipmentRatesLTL
+      summary: Returns LTL freight rates
+      description: Request LTL freight rates for a shipment.
+      tags:
+      - rates
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RateRequest'
+      responses:
+        '200':
+          description: LTL rates
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    RateRequest:
+      type: object
+      description: LTL rate request
+      properties:
+        origin:
+          $ref: '#/components/schemas/Location'
+        destination:
+          $ref: '#/components/schemas/Location'
+        commodities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Commodity'
+    Commodity:
+      type: object
+      description: Freight commodity details
+      properties:
+        description:
+          type: string
+        pieces:
+          type: integer
+        weight:
+          type: number
+        weightUnit:
+          type: string
+          enum:
+          - LB
+          - KG
+        freightClass:
+          type: string
+    Location:
+      type: object
+      description: Shipment location
+      required:
+      - companyName
+      - address1
+      - city
+      - stateOrProvince
+      - postalCode
+      - country
+      - locationType
+      properties:
+        companyName:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        stateOrProvince:
+          type: string
+          minLength: 2
+          maxLength: 2
+        postalCode:
+          type: string
+          minLength: 5
+        country:
+          type: string
+          enum:
+          - US
+          - CA
+          - MX
+        locationType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSTRUCTIONSITE
+          - RESIDENTIAL
+          - TRADESHOW
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header

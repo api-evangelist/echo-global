@@ -1,0 +1,276 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Echo Global Logistics
+    url: https://www.echo.com
+    email: info@echo.com
+  version: 1.0.0
+  title: Echo Authorizer documents shipments API
+  description: 'All API operations require an access token to be passed in the Authorization Header for each request. The token type is an OAuth 2.0 Bearer token. To get the token you have to call the /token operation of this API and provide **client_id** and **client_secret**.
+
+
+    **`Access Token Lifecycle:`** When you recieve an Access Token, it is valid for defined amount of time. The expiration time for the token is returned in the response along with the bearer token.  Developers should implement the client application in a way that  token will be requested again only after it expires. During this time you don''t have to request new token per each request, but you can simply reuse the same token to access API resources, until the token expires. The invalid token or token expiration will be indicated by HTTP Status Code 401 Unauthorized, then your application has to request new Access token.
+
+
+    **`Access Token Request Rate Limiting:`** The Access Token should be used for the lifetime of the token until it has expired. Partners requesting new tokens multiple times in an hour may be subject to rate limiting.
+
+
+    **`API Request Rate Limiting:`** Please do not exceed more than 3 requests per second. Partners who exceed this limit may be subject to rate limiting.'
+servers:
+- description: SwaggerHub API Auto Mocking
+  url: https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0
+- description: Production environment.
+  url: https://auth.echo.com
+tags:
+- name: shipments
+  description: GET and POST to shipment endpoints.
+paths:
+  /v2/shipments/LTL:
+    post:
+      operationId: CreateShipmentLTL
+      summary: Accepts an LTL shipment for creation
+      description: Create a Less Than Truckload (LTL) shipment.
+      tags:
+      - shipments
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentRequest'
+      responses:
+        '200':
+          description: Shipment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+  /v2/shipments/TL:
+    post:
+      operationId: CreateShipmentTL
+      summary: Accepts a TL shipment for creation
+      description: Create a Truckload (TL) shipment.
+      tags:
+      - shipments
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentRequest'
+      responses:
+        '200':
+          description: Shipment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+  /v2/shipments/PL:
+    post:
+      operationId: CreateShipmentPL
+      summary: Accepts a PL shipment for creation
+      description: Create a Partial Load (PL) shipment.
+      tags:
+      - shipments
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentRequest'
+      responses:
+        '200':
+          description: Shipment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+  /v2/shipments/{Id}:
+    get:
+      operationId: GetShipment
+      summary: Returns a shipment
+      description: Retrieve shipment details by shipment ID.
+      tags:
+      - shipments
+      security:
+      - basicAuth: []
+      parameters:
+      - name: Id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The Echo shipment ID
+      responses:
+        '200':
+          description: Shipment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Shipment not found
+  /v2/shipments/{Id}/status:
+    get:
+      operationId: GetShipmentStatus
+      summary: Returns shipment status
+      description: Retrieve the current status of a shipment.
+      tags:
+      - shipments
+      security:
+      - basicAuth: []
+      parameters:
+      - name: Id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Shipment status
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /v2/shipments/{Id}/tracking:
+    get:
+      operationId: GetShipmentTracking
+      summary: Returns tracking information for a shipment
+      description: Retrieve real-time tracking information for a shipment.
+      tags:
+      - shipments
+      security:
+      - basicAuth: []
+      parameters:
+      - name: Id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Tracking information
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    Commodity:
+      type: object
+      description: Freight commodity details
+      properties:
+        description:
+          type: string
+        pieces:
+          type: integer
+        weight:
+          type: number
+        weightUnit:
+          type: string
+          enum:
+          - LB
+          - KG
+        freightClass:
+          type: string
+    ShipmentResponse:
+      type: object
+      description: Shipment response object
+      properties:
+        shipmentId:
+          type: string
+          description: Echo shipment ID
+        status:
+          type: string
+          description: Current shipment status
+        proNumber:
+          type: string
+          description: PRO number assigned to the shipment
+    ShipmentRequest:
+      type: object
+      description: Request body for creating a shipment
+      properties:
+        origin:
+          $ref: '#/components/schemas/Location'
+        destination:
+          $ref: '#/components/schemas/Location'
+        pickupDate:
+          type: string
+          format: date
+          description: Requested pickup date (YYYY-MM-DD)
+        commodities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Commodity'
+      required:
+      - origin
+      - destination
+      - pickupDate
+    Location:
+      type: object
+      description: Shipment location
+      required:
+      - companyName
+      - address1
+      - city
+      - stateOrProvince
+      - postalCode
+      - country
+      - locationType
+      properties:
+        companyName:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        stateOrProvince:
+          type: string
+          minLength: 2
+          maxLength: 2
+        postalCode:
+          type: string
+          minLength: 5
+        country:
+          type: string
+          enum:
+          - US
+          - CA
+          - MX
+        locationType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSTRUCTIONSITE
+          - RESIDENTIAL
+          - TRADESHOW
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
