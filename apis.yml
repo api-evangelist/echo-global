@@ -1,7 +1,20 @@
 aid: echo-global
 name: Echo Global Logistics
 description: Tech-enabled freight brokerage with REST APIs for shipping quotes, booking LTL and FTL shipments, tracking deliveries, and managing carrier relationships. The EchoSync API suite includes the Partner-Connect API for load creation and LTL rating, the Customer API for truckload quoting, the Carrier API for digital freight marketplace access, and an Authorizer API for OAuth 2.0 token management.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/echo-global.png
 url: https://raw.githubusercontent.com/api-evangelist/echo-global/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -16,73 +29,102 @@ tags:
   - Transportation
   - Supply Chain
 apis:
-  - aid: echo-global:echosync-partner-connect-api
-    name: EchoSync Partner-Connect API
-    description: Formerly the Echo REST API. Provides load creation for Truckload, LTL, and Partial shipments, LTL freight rating, real-time shipment tracking, and document retrieval for existing Echo partners.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
-    baseURL: https://api.echo.com
-    tags:
-      - LTL
-      - Truckload
-      - Freight Rating
-      - Shipment Tracking
-      - Document Retrieval
-    properties:
-      - type: Documentation
-        url: https://www.echo.com/technology/integrations/echosync/documentation/
-      - type: OpenAPI
-        url: https://app.swaggerhub.com/apis/echogl/rest-api/
-
-  - aid: echo-global:echosync-customer-api
-    name: EchoSync Customer API
-    description: Provides rapid access to competitive truckload quotes and rates 24/7/365 using OAuth 2.0 Bearer token authentication.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
-    baseURL: https://api.echo.com
-    tags:
-      - Truckload
-      - Rate Quoting
-      - Freight Pricing
-    properties:
-      - type: Documentation
-        url: https://www.echo.com/technology/integrations/echosync/documentation/
-      - type: OpenAPI
-        url: https://app.swaggerhub.com/apis-docs/echogl/Customer_API_OAuth_Public/
-
-  - aid: echo-global:echosync-carrier-api
-    name: EchoSync Carrier API
-    description: Enables freight carriers to access Echo's Digital Freight Marketplace with real-time load visibility, offer placement, and Book It Now functionality to eliminate manual load booking.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
-    baseURL: https://api.echo.com
-    tags:
-      - Carrier
-      - Digital Freight Marketplace
-      - Load Visibility
-      - Freight Booking
-    properties:
-      - type: Documentation
-        url: https://www.echo.com/technology/integrations/echosync/documentation/
-      - type: OpenAPI
-        url: https://app.swaggerhub.com/apis-docs/echogl/Carrier_API_Public/
-
-  - aid: echo-global:echosync-authorizer-api
-    name: EchoSync Authorizer API
-    description: Manages OAuth 2.0 Bearer token authentication for both the Carrier and Customer APIs.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
-    baseURL: https://api.echo.com
-    tags:
-      - Authentication
-      - OAuth 2.0
-      - Authorization
-    properties:
-      - type: Documentation
-        url: https://www.echo.com/technology/integrations/echosync/documentation/
-      - type: OpenAPI
-        url: https://app.swaggerhub.com/apis-docs/echogl/Echo_Authorizer_Public/
-
+- aid: echo-global:echo-global-documents-api
+  name: Echo Global Logistics documents API
+  description: GET and POST to shipment documents endpoints.
+  humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
+  baseURL: https://api.echo.com
+  tags:
+  - documents
+  properties:
+  - type: OpenAPI
+    url: openapi/echo-global-documents-api-openapi.yml
+  - type: Documentation
+    url: https://www.echo.com/technology/integrations/echosync/documentation/
+- aid: echo-global:echo-global-health-api
+  name: Echo Global Logistics health API
+  description: The health API from Echo Global Logistics — 1 operation(s) for health.
+  humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
+  baseURL: https://api.echo.com
+  tags:
+  - health
+  properties:
+  - type: OpenAPI
+    url: openapi/echo-global-health-api-openapi.yml
+  - type: Documentation
+    url: https://www.echo.com/technology/integrations/echosync/documentation/
+- aid: echo-global:echo-global-ping-api
+  name: Echo Global Logistics ping API
+  description: GET to ping endpoints.
+  humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
+  baseURL: https://api.echo.com
+  tags:
+  - ping
+  properties:
+  - type: OpenAPI
+    url: openapi/echo-global-ping-api-openapi.yml
+  - type: Documentation
+    url: https://www.echo.com/technology/integrations/echosync/documentation/
+- aid: echo-global:echo-global-query-api
+  name: Echo Global Logistics query API
+  description: GET and POST to query shipment details endpoints.
+  humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
+  baseURL: https://api.echo.com
+  tags:
+  - query
+  properties:
+  - type: OpenAPI
+    url: openapi/echo-global-query-api-openapi.yml
+  - type: Documentation
+    url: https://www.echo.com/technology/integrations/echosync/documentation/
+- aid: echo-global:echo-global-quotes-api
+  name: Echo Global Logistics quotes API
+  description: Used for creating and retrieving quotes.
+  humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
+  baseURL: https://api.echo.com
+  tags:
+  - quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/echo-global-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://www.echo.com/technology/integrations/echosync/documentation/
+- aid: echo-global:echo-global-rates-api
+  name: Echo Global Logistics rates API
+  description: GET and POST to shipment rates endpoints.
+  humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
+  baseURL: https://api.echo.com
+  tags:
+  - rates
+  properties:
+  - type: OpenAPI
+    url: openapi/echo-global-rates-api-openapi.yml
+  - type: Documentation
+    url: https://www.echo.com/technology/integrations/echosync/documentation/
+- aid: echo-global:echo-global-shipments-api
+  name: Echo Global Logistics shipments API
+  description: GET and POST to shipment endpoints.
+  humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
+  baseURL: https://api.echo.com
+  tags:
+  - shipments
+  properties:
+  - type: OpenAPI
+    url: openapi/echo-global-shipments-api-openapi.yml
+  - type: Documentation
+    url: https://www.echo.com/technology/integrations/echosync/documentation/
+- aid: echo-global:echo-global-token-api
+  name: Echo Global Logistics token API
+  description: Obtaining and using tokens
+  humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
+  baseURL: https://api.echo.com
+  tags:
+  - token
+  properties:
+  - type: OpenAPI
+    url: openapi/echo-global-token-api-openapi.yml
+  - type: Documentation
+    url: https://www.echo.com/technology/integrations/echosync/documentation/
 common:
   - type: AgenticAccess
     url: agentic-access/echo-global-agentic-access.yml
