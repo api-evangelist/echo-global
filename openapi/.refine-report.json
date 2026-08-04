@@ -1,0 +1,30 @@
+{
+  "provider": "echo-global",
+  "sources": [
+    "echo-global-documents-api-openapi.yml",
+    "echo-global-health-api-openapi.yml",
+    "echo-global-ping-api-openapi.yml",
+    "echo-global-query-api-openapi.yml",
+    "echo-global-quotes-api-openapi.yml",
+    "echo-global-rates-api-openapi.yml",
+    "echo-global-shipments-api-openapi.yml",
+    "echo-global-token-api-openapi.yml"
+  ],
+  "outputs": [
+    "echo-global-documents-api-openapi.yml",
+    "echo-global-health-api-openapi.yml",
+    "echo-global-ping-api-openapi.yml",
+    "echo-global-query-api-openapi.yml",
+    "echo-global-quotes-api-openapi.yml",
+    "echo-global-rates-api-openapi.yml",
+    "echo-global-shipments-api-openapi.yml",
+    "echo-global-token-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": [
+    "echosync-carrier-api.json: parse error ParserError: while parsing a flow mapping"
+  ]
+}
