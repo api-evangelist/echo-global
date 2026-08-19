@@ -1,0 +1,879 @@
+{
+  "item": [
+    {
+      "id": "25d09da6-1dc0-4466-af55-e82f6d588182",
+      "name": "quotes",
+      "description": {
+        "content": "Used for creating and retrieving quotes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "435e4257-5c7c-4d92-8fff-a8910401481f",
+          "name": "Used for retrieving quotes.",
+          "request": {
+            "name": "Used for retrieving quotes.",
+            "description": {
+              "content": "Used for retrieving quotes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "quotes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "54664b24-ddbd-4606-8321-9b43aea59bd8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quote\": {\n    \"status\": \"pending\",\n    \"quoteNumber\": \"AB35C7CX98\",\n    \"quoteKey\": \"42a815ef1b444504b422b0dc24e44f8a\",\n    \"quoteId\": \"AB35C7CX98\",\n    \"createdDate\": \"2012-12-05T02:57:08.665Z\",\n    \"expirationDate\": \"2019-05-09T18:43:21.226-06:00\",\n    \"stops\": [\n      {\n        \"stopNumber\": 1,\n        \"stopType\": \"drop\",\n        \"postalCode\": \"string\",\n        \"country\": \"us\",\n        \"serviceWindow\": {\n          \"startDate\": \"1985-08-17\"\n        }\n      },\n      {\n        \"stopNumber\": 1,\n        \"stopType\": \"pick\",\n        \"postalCode\": \"string\",\n        \"country\": \"us\",\n        \"serviceWindow\": {\n          \"startDate\": \"2009-03-11\"\n        }\n      }\n    ],\n    \"serviceOptions\": [\n      {\n        \"serviceOptionId\": 1,\n        \"currencyType\": \"usd\",\n        \"transitTimeInDays\": 3,\n        \"totalMileage\": 2075,\n        \"pickupDate\": \"1977-01-04\",\n        \"mode\": \"tl\",\n        \"totalCost\": 50.351135369509635,\n        \"equipment\": \"flatbed_48\",\n        \"isHazmat\": false\n      },\n      {\n        \"serviceOptionId\": 1,\n        \"currencyType\": \"usd\",\n        \"transitTimeInDays\": 3,\n        \"totalMileage\": 2075,\n        \"pickupDate\": \"2010-07-01\",\n        \"mode\": \"tl\",\n        \"totalCost\": 732.7851740275826,\n        \"equipment\": \"van_dry_53\",\n        \"isHazmat\": false\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bca313db-f501-4daa-802c-c0173997901c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f08326af-2022-4628-8634-8bf3cd3d24b6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41eb5b25-569f-4375-905e-1145bdecd756",
+              "name": "Forbidden Invalid Token or API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58ff4b9d-c377-4f05-bddd-5c252f5b88d7",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08971001-d79f-4563-af37-03399091de92",
+              "name": "Server not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2d8f642-4e98-4e5c-9974-b83e905c04e9",
+              "name": "Service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4faf52bd-dc8d-4cf1-923d-b412c2237371",
+          "name": "Used for creating quotes.",
+          "request": {
+            "name": "Used for creating quotes.",
+            "description": {
+              "content": "Used for creating quotes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Echo-Channel-Id",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Echo-System-Id",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "28f52093-fe44-4fe9-8eda-c97fb8457119",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-Channel-Id",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-System-Id",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3097b8c1-1b46-4b2e-b792-dc0c1b56b163",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-Channel-Id",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-System-Id",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "517fd7f5-8bc3-4e6b-8cae-3b4690064922",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-Channel-Id",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-System-Id",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7de789bf-8025-45c2-a089-7958480859da",
+              "name": "Invalid token or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-Channel-Id",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-System-Id",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ed4a3ba-54f6-462f-b0ce-9f60c720f5d0",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-Channel-Id",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-System-Id",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8492fbef-a526-414d-8646-57a5f039c84c",
+              "name": "Service options not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-Channel-Id",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-System-Id",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "57933a1d-d620-4c90-b26d-3496b9065eb7",
+              "name": "Server not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-Channel-Id",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-System-Id",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af06d05b-9ca8-44fd-a194-fa1077a71388",
+              "name": "Bad gateway",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-Channel-Id",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-System-Id",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e56a08e2-8ee0-4b0d-8574-bb78cffffd2a",
+              "name": "Service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-Channel-Id",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Echo-System-Id",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stops\": [\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    },\n    {\n      \"stopNumber\": \"<integer>\",\n      \"stopType\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"serviceWindow\": {\n        \"startDate\": \"<date>\"\n      }\n    }\n  ],\n  \"equipment\": \"<string>\",\n  \"isHazmat\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ed0caca0-d886-4f5b-9306-c3bdb70f90e3",
+    "name": "Echo Authorizer documents quotes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "All API operations require an access token to be passed in the Authorization Header for each request. The token type is an OAuth 2.0 Bearer token. To get the token you have to call the /token operation of this API and provide **client_id** and **client_secret**.\n\n**`Access Token Lifecycle:`** When you recieve an Access Token, it is valid for defined amount of time. The expiration time for the token is returned in the response along with the bearer token.  Developers should implement the client application in a way that  token will be requested again only after it expires. During this time you don't have to request new token per each request, but you can simply reuse the same token to access API resources, until the token expires. The invalid token or token expiration will be indicated by HTTP Status Code 401 Unauthorized, then your application has to request new Access token.\n\n**`Access Token Request Rate Limiting:`** The Access Token should be used for the lifetime of the token until it has expired. Partners requesting new tokens multiple times in an hour may be subject to rate limiting.\n\n**`API Request Rate Limiting:`** Please do not exceed more than 3 requests per second. Partners who exceed this limit may be subject to rate limiting.\n\nContact Support:\n Name: Echo Global Logistics\n Email: info@echo.com",
+      "type": "text/plain"
+    }
+  }
+}

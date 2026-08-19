@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Echo Authorizer documents shipments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Accepts an LTL shipment for creation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/shipments/LTL",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Create a Less Than Truckload (LTL) shipment."
+        },
+        {
+          "info": {
+            "name": "Accepts a TL shipment for creation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/shipments/TL",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Create a Truckload (TL) shipment."
+        },
+        {
+          "info": {
+            "name": "Accepts a PL shipment for creation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/shipments/PL",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Create a Partial Load (PL) shipment."
+        },
+        {
+          "info": {
+            "name": "Returns a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/shipments/:Id",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path",
+                "description": "The Echo shipment ID"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve shipment details by shipment ID."
+        },
+        {
+          "info": {
+            "name": "Returns shipment status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/shipments/:Id/status",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve the current status of a shipment."
+        },
+        {
+          "info": {
+            "name": "Returns tracking information for a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/shipments/:Id/tracking",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve real-time tracking information for a shipment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

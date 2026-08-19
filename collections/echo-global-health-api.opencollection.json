@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Echo Authorizer documents health API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Used for checking healthy/unhealthy endpoints.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/__health"
+          },
+          "docs": "Used for checking healthy/unhealthy endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

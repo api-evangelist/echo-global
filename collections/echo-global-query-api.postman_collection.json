@@ -1,0 +1,188 @@
+{
+  "item": [
+    {
+      "id": "35ee39ae-a5c3-4dca-9d7f-42ceec37f858",
+      "name": "query",
+      "description": {
+        "content": "GET and POST to query shipment details endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62577660-9831-4c4f-99e5-3878e44ae963",
+          "name": "Query shipment details",
+          "request": {
+            "name": "Query shipment details",
+            "description": {
+              "content": "Query shipments based on filter criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "query",
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dateFrom\": \"<date>\",\n  \"dateTo\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d92bc24-56a6-4745-93fa-df3b4014246c",
+              "name": "Query results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateFrom\": \"<date>\",\n  \"dateTo\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a3dc8d6-3e76-4408-b888-c42c983cfc80",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateFrom\": \"<date>\",\n  \"dateTo\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "28a1627e-1d96-400c-9418-10af0014b638",
+    "name": "Echo Authorizer documents query API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "All API operations require an access token to be passed in the Authorization Header for each request. The token type is an OAuth 2.0 Bearer token. To get the token you have to call the /token operation of this API and provide **client_id** and **client_secret**.\n\n**`Access Token Lifecycle:`** When you recieve an Access Token, it is valid for defined amount of time. The expiration time for the token is returned in the response along with the bearer token.  Developers should implement the client application in a way that  token will be requested again only after it expires. During this time you don't have to request new token per each request, but you can simply reuse the same token to access API resources, until the token expires. The invalid token or token expiration will be indicated by HTTP Status Code 401 Unauthorized, then your application has to request new Access token.\n\n**`Access Token Request Rate Limiting:`** The Access Token should be used for the lifetime of the token until it has expired. Partners requesting new tokens multiple times in an hour may be subject to rate limiting.\n\n**`API Request Rate Limiting:`** Please do not exceed more than 3 requests per second. Partners who exceed this limit may be subject to rate limiting.\n\nContact Support:\n Name: Echo Global Logistics\n Email: info@echo.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Echo Authorizer documents rates API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns LTL freight rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/rates/LTL",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Request LTL freight rates for a shipment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

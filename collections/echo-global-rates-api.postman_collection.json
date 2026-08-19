@@ -1,0 +1,237 @@
+{
+  "item": [
+    {
+      "id": "95e5c1b3-7bc2-4044-844e-ae08818587df",
+      "name": "rates",
+      "description": {
+        "content": "GET and POST to shipment rates endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dcf1950a-0a3d-471c-be75-31e0651cd557",
+          "name": "Returns LTL freight rates",
+          "request": {
+            "name": "Returns LTL freight rates",
+            "description": {
+              "content": "Request LTL freight rates for a shipment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "rates",
+                "LTL"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"origin\": {\n    \"companyName\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateOrProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"destination\": {\n    \"companyName\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateOrProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"commodities\": [\n    {\n      \"description\": \"<string>\",\n      \"pieces\": \"<integer>\",\n      \"weight\": \"<number>\",\n      \"weightUnit\": \"<string>\",\n      \"freightClass\": \"<string>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"pieces\": \"<integer>\",\n      \"weight\": \"<number>\",\n      \"weightUnit\": \"<string>\",\n      \"freightClass\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f63235c-98db-473f-88ae-5f51e0fcfa90",
+              "name": "LTL rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates",
+                    "LTL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"origin\": {\n    \"companyName\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateOrProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"destination\": {\n    \"companyName\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateOrProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"commodities\": [\n    {\n      \"description\": \"<string>\",\n      \"pieces\": \"<integer>\",\n      \"weight\": \"<number>\",\n      \"weightUnit\": \"<string>\",\n      \"freightClass\": \"<string>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"pieces\": \"<integer>\",\n      \"weight\": \"<number>\",\n      \"weightUnit\": \"<string>\",\n      \"freightClass\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cbc7de8-067f-4c46-8182-5183d9b8cce4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates",
+                    "LTL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"origin\": {\n    \"companyName\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateOrProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"destination\": {\n    \"companyName\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateOrProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"commodities\": [\n    {\n      \"description\": \"<string>\",\n      \"pieces\": \"<integer>\",\n      \"weight\": \"<number>\",\n      \"weightUnit\": \"<string>\",\n      \"freightClass\": \"<string>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"pieces\": \"<integer>\",\n      \"weight\": \"<number>\",\n      \"weightUnit\": \"<string>\",\n      \"freightClass\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d01e9bb-bf0d-46d5-ba0e-63f5d053a7f3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates",
+                    "LTL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"origin\": {\n    \"companyName\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateOrProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"destination\": {\n    \"companyName\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"stateOrProvince\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"locationType\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"commodities\": [\n    {\n      \"description\": \"<string>\",\n      \"pieces\": \"<integer>\",\n      \"weight\": \"<number>\",\n      \"weightUnit\": \"<string>\",\n      \"freightClass\": \"<string>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"pieces\": \"<integer>\",\n      \"weight\": \"<number>\",\n      \"weightUnit\": \"<string>\",\n      \"freightClass\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9c488aa7-b4ac-4bcf-b53c-6aecce06a879",
+    "name": "Echo Authorizer documents rates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "All API operations require an access token to be passed in the Authorization Header for each request. The token type is an OAuth 2.0 Bearer token. To get the token you have to call the /token operation of this API and provide **client_id** and **client_secret**.\n\n**`Access Token Lifecycle:`** When you recieve an Access Token, it is valid for defined amount of time. The expiration time for the token is returned in the response along with the bearer token.  Developers should implement the client application in a way that  token will be requested again only after it expires. During this time you don't have to request new token per each request, but you can simply reuse the same token to access API resources, until the token expires. The invalid token or token expiration will be indicated by HTTP Status Code 401 Unauthorized, then your application has to request new Access token.\n\n**`Access Token Request Rate Limiting:`** The Access Token should be used for the lifetime of the token until it has expired. Partners requesting new tokens multiple times in an hour may be subject to rate limiting.\n\n**`API Request Rate Limiting:`** Please do not exceed more than 3 requests per second. Partners who exceed this limit may be subject to rate limiting.\n\nContact Support:\n Name: Echo Global Logistics\n Email: info@echo.com",
+      "type": "text/plain"
+    }
+  }
+}

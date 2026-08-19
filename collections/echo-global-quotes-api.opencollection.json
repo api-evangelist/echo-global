@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Echo Authorizer documents quotes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Used for retrieving quotes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/quotes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Used for retrieving quotes."
+        },
+        {
+          "info": {
+            "name": "Used for creating quotes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0/v2/quotes",
+            "headers": [
+              {
+                "name": "X-Echo-Channel-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Echo-System-Id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Used for creating quotes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
