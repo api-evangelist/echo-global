@@ -35,6 +35,8 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
+  - Documents
+  tags_raw:
   - documents
   properties:
   - type: OpenAPI
@@ -47,6 +49,8 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
+  - Health
+  tags_raw:
   - health
   properties:
   - type: OpenAPI
@@ -59,6 +63,8 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
+  - Ping
+  tags_raw:
   - ping
   properties:
   - type: OpenAPI
@@ -71,6 +77,8 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
+  - Query
+  tags_raw:
   - query
   properties:
   - type: OpenAPI
@@ -83,6 +91,8 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
+  - Quotes
+  tags_raw:
   - quotes
   properties:
   - type: OpenAPI
@@ -95,6 +105,8 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
+  - Rates
+  tags_raw:
   - rates
   properties:
   - type: OpenAPI
@@ -107,6 +119,8 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
+  - Shipments
+  tags_raw:
   - shipments
   properties:
   - type: OpenAPI
@@ -119,6 +133,8 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
+  - Token
+  tags_raw:
   - token
   properties:
   - type: OpenAPI
