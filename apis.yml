@@ -154,6 +154,9 @@ apis:
   - type: Documentation
     url: https://www.echo.com/technology/integrations/echosync/documentation/
 common:
+  - type: CapabilityMap
+    url: capabilities/echo-global-capability-edges.yml
+    name: Echo Global Logistics Business Capability Map
   - type: AgenticAccess
     url: agentic-access/echo-global-agentic-access.yml
   - type: VulnerabilityDisclosure

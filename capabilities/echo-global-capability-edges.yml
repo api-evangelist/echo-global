@@ -1,0 +1,47 @@
+slug: echo-global
+provider: Echo Global Logistics
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: quotes
+  spec_file: echo-global-quotes-api-openapi.yml
+  capability_id: BC-2450.10
+  capability_id_l1: BC-2450
+  capability_name: Shipper Quotation Management
+  confidence: 0.75
+  evidence: POST /v2/quotes Quote_v2.create Used for creating quotes.; GET /v2/quotes/{id} Quote_v2.show
+  reason: Echo is a freight brokerage and this tag creates and retrieves freight quotes for shippers,
+    matching issuance of forwarder/broker rates on quotation requests. Sub-capability inferred from the
+    brokerage business model, hence 0.75.
+- tag: rates
+  spec_file: echo-global-rates-api-openapi.yml
+  capability_id: BC-2520
+  capability_id_l1: BC-2520
+  capability_name: Freight Rating & Tariff Management
+  confidence: 0.7
+  evidence: 'POST /v2/rates/LTL GetShipmentRatesLTL Returns LTL freight rates; schemas: Commodity, RateRequest,
+    Location'
+  reason: Operation computes and returns LTL freight rates from a rate request with commodity and location
+    inputs — freight rating. Ambiguous between rating-engine operations and spot/contract rate retrieval,
+    so L1 only.
+- tag: shipments
+  spec_file: echo-global-shipments-api-openapi.yml
+  capability_id: BC-2450
+  capability_id_l1: BC-2450
+  capability_name: Freight Forwarding & Brokerage Management
+  confidence: 0.7
+  evidence: POST /v2/shipments/LTL CreateShipmentLTL Accepts an LTL shipment for creation; GET /v2/shipments/{Id}/tracking
+    GetShipmentTracking
+  reason: Shipment acceptance across LTL/TL/PL plus status and tracking retrieval from a tech-enabled
+    freight broker — arrangement of transport on behalf of shippers. Mixed booking and visibility operations,
+    so no single L2 asserted.
