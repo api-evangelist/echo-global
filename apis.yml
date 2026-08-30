@@ -117,7 +117,7 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
-  - Rates
+  - rates
   tags_raw:
   - rates
   properties:
@@ -131,7 +131,7 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
-  - Shipments
+  - shipments
   tags_raw:
   - shipments
   properties:
