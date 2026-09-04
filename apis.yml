@@ -1,6 +1,9 @@
 aid: echo-global
 name: Echo Global Logistics
-description: Tech-enabled freight brokerage with REST APIs for shipping quotes, booking LTL and FTL shipments, tracking deliveries, and managing carrier relationships. The EchoSync API suite includes the Partner-Connect API for load creation and LTL rating, the Customer API for truckload quoting, the Carrier API for digital freight marketplace access, and an Authorizer API for OAuth 2.0 token management.
+description: Tech-enabled freight brokerage with REST APIs for shipping quotes, booking LTL and FTL shipments, tracking
+  deliveries, and managing carrier relationships. The EchoSync API suite includes the Partner-Connect API for load
+  creation and LTL rating, the Customer API for truckload quoting, the Carrier API for digital freight marketplace
+  access, and an Authorizer API for OAuth 2.0 token management.
 deliveryModel:
   model: saas
   open_source: false
@@ -15,16 +18,17 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: enterprise
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Enterprise · Self-serve signup
-  confidence: high
+  label: Enterprise
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/echo-global.png
 url: https://raw.githubusercontent.com/api-evangelist/echo-global/refs/heads/main/apis.yml
@@ -32,14 +36,14 @@ created: '2026-06-13'
 modified: '2026-06-13'
 specificationVersion: '0.23'
 tags:
-  - Freight
-  - Logistics
-  - Shipping
-  - LTL
-  - Truckload
-  - Freight Brokerage
-  - Transportation
-  - Supply Chain
+- Freight
+- Logistics
+- Shipping
+- LTL
+- Truckload
+- Freight Brokerage
+- Transportation
+- Supply Chain
 apis:
 - aid: echo-global:echo-global-documents-api
   name: Echo Global Logistics documents API
@@ -153,37 +157,56 @@ apis:
     url: openapi/echo-global-token-api-openapi.yml
   - type: Documentation
     url: https://www.echo.com/technology/integrations/echosync/documentation/
-common:
-  - type: CapabilityMap
-    url: capabilities/echo-global-capability-edges.yml
-    name: Echo Global Logistics Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/echo-global-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/echo-global-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/echo-global-domain-security.yml
-  - type: Authentication
-    url: authentication/echo-global-authentication.yml
-  - type: Website
-    url: https://www.echo.com/
+- aid: echo-global:edi
+  name: Echo EDI Integration
+  description: Echo supports system-to-system EDI integration alongside its REST APIs via the EchoSync platform,
+    enabling shippers, carriers, third parties, and TMS software to exchange transactional data with Echo's systems.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.echo.com/technology/integrations/echosync/
+  tags:
+  - EDI
+  - Integration
+  - B2B
+  - EchoSync
+  properties:
   - type: Documentation
-    url: https://www.echo.com/technology/integrations/echosync/documentation/
-  - type: Blog
-    url: https://www.echo.com/resources/blog/
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/echo-global-logistics
-  - type: X
-    url: https://x.com/echologistics
-  - type: Pricing
-    url: https://www.echo.com/shippers/get-a-quote/
-  - type: Plans
-    url: plans/echo-global-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/echo-global-rate-limits.yml
-  - type: FinOps
-    url: finops/echo-global-finops.yml
-
+    url: https://www.echo.com/technology/integrations/echosync/
+common:
+- type: CapabilityMap
+  url: capabilities/echo-global-capability-edges.yml
+  name: Echo Global Logistics Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/echo-global-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/echo-global-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/echo-global-domain-security.yml
+- type: Authentication
+  url: authentication/echo-global-authentication.yml
+- type: Website
+  url: https://www.echo.com/
+- type: Documentation
+  url: https://www.echo.com/technology/integrations/echosync/documentation/
+- type: Blog
+  url: https://www.echo.com/resources/blog/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/echo-global-logistics
+- type: X
+  url: https://x.com/echologistics
+- type: Pricing
+  url: https://www.echo.com/shippers/get-a-quote/
+- type: Plans
+  url: plans/echo-global-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/echo-global-rate-limits.yml
+- type: FinOps
+  url: finops/echo-global-finops.yml
+- type: Portal
+  url: https://www.echo.com/technology/integrations/echosync/
+- type: APIReference
+  url: https://app.swaggerhub.com/organizations/EchoGlobalLogistics
+- type: GitHubOrganization
+  url: https://github.com/EchoGlobalLogistics
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
