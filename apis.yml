@@ -146,7 +146,7 @@ apis:
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   baseURL: https://api.echo.com
   tags:
-  - Token
+  - Tokens
   tags_raw:
   - token
   properties:
@@ -192,6 +192,13 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   tags:
+  - Shippers
+  - Truckload
+  - Quoting
+  - Tracking
+  - REST
+  - EchoSync
+  tags_raw:
   - Shipper
   - Truckload
   - Quoting
@@ -231,6 +238,14 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://www.echo.com/technology/integrations/echosync/documentation/
   tags:
+  - Partners
+  - TMS
+  - LTL
+  - Truckload
+  - Tracking
+  - REST
+  - EchoSync
+  tags_raw:
   - Partner
   - TMS
   - LTL
