@@ -1,37 +1,30 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
+  title: Customer Quotes API
+  description: '# Introduction
+
+    API for Echo Customers.'
+  version: v2.1.3-main
   contact:
     name: Echo Global Logistics
     url: https://www.echo.com
     email: info@echo.com
-  version: 1.0.0
-  title: Echo Authorizer documents quotes API
-  description: 'All API operations require an access token to be passed in the Authorization Header for each request. The token type is an OAuth 2.0 Bearer token. To get the token you have to call the /token operation of this API and provide **client_id** and **client_secret**.
-
-
-    **`Access Token Lifecycle:`** When you recieve an Access Token, it is valid for defined amount of time. The expiration time for the token is returned in the response along with the bearer token.  Developers should implement the client application in a way that  token will be requested again only after it expires. During this time you don''t have to request new token per each request, but you can simply reuse the same token to access API resources, until the token expires. The invalid token or token expiration will be indicated by HTTP Status Code 401 Unauthorized, then your application has to request new Access token.
-
-
-    **`Access Token Request Rate Limiting:`** The Access Token should be used for the lifetime of the token until it has expired. Partners requesting new tokens multiple times in an hour may be subject to rate limiting.
-
-
-    **`API Request Rate Limiting:`** Please do not exceed more than 3 requests per second. Partners who exceed this limit may be subject to rate limiting.'
 servers:
 - description: SwaggerHub API Auto Mocking
-  url: https://virtserver.swaggerhub.com/echogl/Echo_Authorizer_Public/1.0.0
-- description: Production environment.
-  url: https://auth.echo.com
+  url: https://virtserver.swaggerhub.com/echogl/Customer_API_OAuth_Public/v2.1.3-main
+- url: https://customerapi.echo.com
+  description: Production server
 tags:
-- name: quotes
+- name: Quotes
   description: Used for creating and retrieving quotes.
 paths:
   /v2/quotes/{id}:
     get:
       operationId: Quote_v2.show
       description: Used for retrieving quotes.
-      summary: Used for retrieving quotes.
+      summary: Used for retrieving quotes
       tags:
-      - quotes
+      - Quotes
       parameters:
       - name: id
         in: path
@@ -172,9 +165,9 @@ paths:
     post:
       operationId: Quote_v2.create
       description: Used for creating quotes.
-      summary: Used for creating quotes.
+      summary: Used for creating quotes
       tags:
-      - quotes
+      - Quotes
       parameters:
       - in: header
         name: X-Echo-Channel-Id
@@ -262,10 +255,21 @@ paths:
       - customer_api_authorizer_post: []
 components:
   securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
-    apiKey:
+    customer_api_authorizer_post:
       type: apiKey
-      name: x-api-key
+      name: Authorization
       in: header
+      x-amazon-apigateway-authtype: custom
+    customer_api_authorizer_get:
+      type: apiKey
+      name: Authorization
+      in: header
+      x-amazon-apigateway-authtype: custom
+x-tagGroups:
+- name: Core APIs
+  tags:
+  - quotes
+  - health
+- name: CORS Support
+  tags:
+  - CORS

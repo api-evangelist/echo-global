@@ -1,30 +1,40 @@
 {
   "provider": "echo-global",
   "sources": [
-    "echo-global-documents-api-openapi.yml",
-    "echo-global-health-api-openapi.yml",
-    "echo-global-ping-api-openapi.yml",
-    "echo-global-query-api-openapi.yml",
-    "echo-global-quotes-api-openapi.yml",
-    "echo-global-rates-api-openapi.yml",
-    "echo-global-shipments-api-openapi.yml",
-    "echo-global-token-api-openapi.yml"
+    "_original/echosync-authorizer-api.json",
+    "_original/echosync-customer-api.json",
+    "_original/echosync-partner-connect-api.json"
   ],
   "outputs": [
-    "echo-global-documents-api-openapi.yml",
+    "echo-global-token-api-openapi.yml",
     "echo-global-health-api-openapi.yml",
+    "echo-global-quotes-api-openapi.yml",
+    "echo-global-documents-api-openapi.yml",
     "echo-global-ping-api-openapi.yml",
     "echo-global-query-api-openapi.yml",
-    "echo-global-quotes-api-openapi.yml",
     "echo-global-rates-api-openapi.yml",
-    "echo-global-shipments-api-openapi.yml",
-    "echo-global-token-api-openapi.yml"
+    "echo-global-shipments-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "echosync-authorizer-api.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "echosync-customer-api.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "echosync-customer-api.json: declared missing tag: health",
+    "echosync-partner-connect-api.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": [
-    "echosync-carrier-api.json: parse error ParserError: while parsing a flow mapping"
+    "echosync-carrier-api.json: parse error ParserError: while parsing a flow mapping",
+    "echo-global-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "echo-global-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "echo-global-ping-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "echo-global-query-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "echo-global-quotes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "echo-global-rates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "echo-global-shipments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "echo-global-token-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
