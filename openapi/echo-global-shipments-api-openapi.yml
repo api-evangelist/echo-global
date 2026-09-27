@@ -165,39 +165,6 @@ paths:
           description: Not found
 components:
   schemas:
-    ShipmentResponse:
-      type: object
-      description: Shipment response object
-      properties:
-        shipmentId:
-          type: string
-          description: Echo shipment ID
-        status:
-          type: string
-          description: Current shipment status
-        proNumber:
-          type: string
-          description: PRO number assigned to the shipment
-    ShipmentRequest:
-      type: object
-      description: Request body for creating a shipment
-      properties:
-        origin:
-          $ref: '#/components/schemas/Location'
-        destination:
-          $ref: '#/components/schemas/Location'
-        pickupDate:
-          type: string
-          format: date
-          description: Requested pickup date (YYYY-MM-DD)
-        commodities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Commodity'
-      required:
-      - origin
-      - destination
-      - pickupDate
     Location:
       type: object
       description: Shipment location
@@ -238,6 +205,39 @@ components:
           - CONSTRUCTIONSITE
           - RESIDENTIAL
           - TRADESHOW
+    ShipmentResponse:
+      type: object
+      description: Shipment response object
+      properties:
+        shipmentId:
+          type: string
+          description: Echo shipment ID
+        status:
+          type: string
+          description: Current shipment status
+        proNumber:
+          type: string
+          description: PRO number assigned to the shipment
+    ShipmentRequest:
+      type: object
+      description: Request body for creating a shipment
+      properties:
+        origin:
+          $ref: '#/components/schemas/Location'
+        destination:
+          $ref: '#/components/schemas/Location'
+        pickupDate:
+          type: string
+          format: date
+          description: Requested pickup date (YYYY-MM-DD)
+        commodities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Commodity'
+      required:
+      - origin
+      - destination
+      - pickupDate
     Commodity:
       type: object
       description: Freight commodity details
