@@ -101,31 +101,6 @@ paths:
       security:
       - apiKey: []
 components:
-  schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Short indicator of error type
-        error_desc:
-          type: string
-          description: Description of error
-    Token:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: JSON Web Token (JWT) that represents a session generated for a client
-        expires_in:
-          type: integer
-          description: Number of seconds until the session expires
-        token_type:
-          type: string
-          description: Type of access token - always set to Bearer
-        scope:
-          type: string
-          description: scope(s) approved with the token
   responses:
     TokenResponse:
       description: Success
@@ -141,6 +116,31 @@ components:
                 expires_in: 3600
                 token_type: Bearer
                 scope: quotes:create
+  schemas:
+    Token:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: JSON Web Token (JWT) that represents a session generated for a client
+        expires_in:
+          type: integer
+          description: Number of seconds until the session expires
+        token_type:
+          type: string
+          description: Type of access token - always set to Bearer
+        scope:
+          type: string
+          description: scope(s) approved with the token
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Short indicator of error type
+        error_desc:
+          type: string
+          description: Description of error
   securitySchemes:
     basicAuth:
       type: http
