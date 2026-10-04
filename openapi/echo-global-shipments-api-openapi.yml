@@ -165,19 +165,23 @@ paths:
           description: Not found
 components:
   schemas:
-    ShipmentResponse:
+    Commodity:
       type: object
-      description: Shipment response object
+      description: Freight commodity details
       properties:
-        shipmentId:
+        description:
           type: string
-          description: Echo shipment ID
-        status:
+        pieces:
+          type: integer
+        weight:
+          type: number
+        weightUnit:
           type: string
-          description: Current shipment status
-        proNumber:
+          enum:
+          - LB
+          - KG
+        freightClass:
           type: string
-          description: PRO number assigned to the shipment
     ShipmentRequest:
       type: object
       description: Request body for creating a shipment
@@ -198,23 +202,6 @@ components:
       - origin
       - destination
       - pickupDate
-    Commodity:
-      type: object
-      description: Freight commodity details
-      properties:
-        description:
-          type: string
-        pieces:
-          type: integer
-        weight:
-          type: number
-        weightUnit:
-          type: string
-          enum:
-          - LB
-          - KG
-        freightClass:
-          type: string
     Location:
       type: object
       description: Shipment location
@@ -255,6 +242,19 @@ components:
           - CONSTRUCTIONSITE
           - RESIDENTIAL
           - TRADESHOW
+    ShipmentResponse:
+      type: object
+      description: Shipment response object
+      properties:
+        shipmentId:
+          type: string
+          description: Echo shipment ID
+        status:
+          type: string
+          description: Current shipment status
+        proNumber:
+          type: string
+          description: PRO number assigned to the shipment
   securitySchemes:
     basicAuth:
       type: http

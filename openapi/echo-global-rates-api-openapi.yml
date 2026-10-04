@@ -38,18 +38,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    RateRequest:
-      type: object
-      description: LTL rate request
-      properties:
-        origin:
-          $ref: '#/components/schemas/Location'
-        destination:
-          $ref: '#/components/schemas/Location'
-        commodities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Commodity'
     Commodity:
       type: object
       description: Freight commodity details
@@ -107,6 +95,18 @@ components:
           - CONSTRUCTIONSITE
           - RESIDENTIAL
           - TRADESHOW
+    RateRequest:
+      type: object
+      description: LTL rate request
+      properties:
+        origin:
+          $ref: '#/components/schemas/Location'
+        destination:
+          $ref: '#/components/schemas/Location'
+        commodities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Commodity'
   securitySchemes:
     basicAuth:
       type: http

@@ -117,6 +117,15 @@ components:
                 token_type: Bearer
                 scope: quotes:create
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Short indicator of error type
+        error_desc:
+          type: string
+          description: Description of error
     Token:
       type: object
       properties:
@@ -132,15 +141,6 @@ components:
         scope:
           type: string
           description: scope(s) approved with the token
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Short indicator of error type
-        error_desc:
-          type: string
-          description: Description of error
   securitySchemes:
     basicAuth:
       type: http
