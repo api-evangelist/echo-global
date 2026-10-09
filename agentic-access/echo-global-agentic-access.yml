@@ -1,39 +1,56 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/echosync-authorizer-api.json, openapi/echosync-customer-api.json, openapi/echosync-partner-connect-api.json
+source: openapi/echo-global-documents-api-openapi.yml, openapi/echo-global-health-api-openapi.yml,
+  openapi/echo-global-ping-api-openapi.yml, openapi/echo-global-query-api-openapi.yml, openapi/echo-global-quotes-api-openapi.yml,
+  openapi/echo-global-rates-api-openapi.yml, openapi/echo-global-shipments-api-openapi.yml,
+  openapi/echo-global-token-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 14
   by_action_class:
-    acting: 7
-    connected: 7
+    connected: 9
+    acting: 5
   by_consequence:
+    read: 9
     write: 2
-    read: 7
-    physical: 5
+    physical: 3
   human_in_the_loop_required: 0
 operations:
-- path: /token
-  method: post
-  operationId: token
+- path: /v2/shipments/{Id}/documents
+  method: get
+  operationId: GetShipmentDocuments
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /v2/__health
   method: get
   operationId: Health.show
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/ping
+  method: get
+  operationId: GetPingResponse
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/query/shipments
+  method: post
+  operationId: QueryShipments
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -67,9 +84,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v2/ping
-  method: get
-  operationId: GetPingResponse
+- path: /v2/rates/LTL
+  method: post
+  operationId: GetShipmentRatesLTL
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -161,46 +178,16 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v2/shipments/{Id}/documents
-  method: get
-  operationId: GetShipmentDocuments
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v2/rates/LTL
+- path: /token
   method: post
-  operationId: GetShipmentRatesLTL
+  operationId: token
   x-agentic-access:
     action-class: acting
-    consequence: physical
+    consequence: write
     subject: required
     audience: null
     token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v2/query/shipments
-  method: post
-  operationId: QueryShipments
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
+      max-ttl: 900
     escalation:
       human-in-the-loop: conditional
       triggers:

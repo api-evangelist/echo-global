@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Echo Global Logistics Plans and Pricing
 description: Echo Global Logistics operates as a technology-enabled freight brokerage. API access via EchoSync is partner-based and requires direct engagement with an Echo sales representative. No self-serve tiered plans are published publicly; pricing is negotiated based on shipment volume, service type, and integration complexity.
 url: https://www.echo.com/technology/integrations/echosync/
@@ -38,3 +42,27 @@ notes:
   - Pricing for freight brokerage services is shipment-specific and contract-based
   - Contract rates typically set annually; short-term 3-6 month structures also available
   - All API access requires an existing partner relationship with Echo Global Logistics
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Partner-Connect API (Custom)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Customer API (Custom)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Carrier API (Custom)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
