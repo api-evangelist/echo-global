@@ -165,6 +165,19 @@ paths:
           description: Not found
 components:
   schemas:
+    ShipmentResponse:
+      type: object
+      description: Shipment response object
+      properties:
+        shipmentId:
+          type: string
+          description: Echo shipment ID
+        status:
+          type: string
+          description: Current shipment status
+        proNumber:
+          type: string
+          description: PRO number assigned to the shipment
     Commodity:
       type: object
       description: Freight commodity details
@@ -242,19 +255,6 @@ components:
           - CONSTRUCTIONSITE
           - RESIDENTIAL
           - TRADESHOW
-    ShipmentResponse:
-      type: object
-      description: Shipment response object
-      properties:
-        shipmentId:
-          type: string
-          description: Echo shipment ID
-        status:
-          type: string
-          description: Current shipment status
-        proNumber:
-          type: string
-          description: PRO number assigned to the shipment
   securitySchemes:
     basicAuth:
       type: http
